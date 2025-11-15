@@ -1,8 +1,12 @@
 import React from "react";
-import { View, Button } from "react-native";
+import { View, Button,Text} from "react-native";
 
-const HomeScreen = ({ navigation }: any) => {
+export default function HomeScreen  ({ navigation }: any) {
   const showWelcome = false;
+
+  const Redirect = () => {
+    navigation.navigate("Profile")
+  }
 
   return (
     <View style={{ padding: 20 }}>
@@ -10,12 +14,9 @@ const HomeScreen = ({ navigation }: any) => {
 
       <Button
         title="Ir a Perfil"
-        onPress={() => {
-          navigation.navigate("Profile");
-        }}
+        onPress={Redirect}
+        
       />
     </View>
   );
 };
-
-export default HomeScreen;
