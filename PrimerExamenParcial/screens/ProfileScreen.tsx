@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Text } from "react-native";
+import { View, TextInput, Button, Text , StyleSheet} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const ProfileScreen = () => {
+export default function ProfileScreen (){
+
+
   const [nombre, setNombre] = useState();
   const [edad, setEdad] = useState("");
   const [bio] = useState(""); 
@@ -11,10 +14,11 @@ const ProfileScreen = () => {
     if (nombre && edad) {
       setSaved(true);
     }
+    setSaved(false);
   };
 
   return (
-    <View style={{ padding: 20 }}>
+    <SafeAreaView style={StyleSheet.campos}>
       <TextInput placeholder="Nombre" />
       <TextInput placeholder="Edad" />
       <TextInput placeholder="Biografía" />
@@ -24,8 +28,12 @@ const ProfileScreen = () => {
       {saved && <View> 
         <Text>Tu nombre es: {nombre}, tienes {edad} años</Text>
         </View>}
-    </View>
+    </SafeAreaView>
   );
 };
 
-export default ProfileScreen;
+const styles = StyleSheet.create({
+  campos : {
+  }
+});
+
