@@ -6,16 +6,14 @@ import ProfileScreen from "./screens/ProfileScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 const Stack = createNativeStackNavigator();
 
-
-  export default function App() {
+export default function App() {
   return (
     <NavigationContainer>
-    <Stack.Navigator initialRouteName='Home'>
-      <Stack.Screen name='Home' component={HomeScreen} />
-      <Stack.Screen name='Profile' component={SettingsScreen} />
-       <Stack.Screen name='Settings' component={SettingsScreen} />
-    </Stack.Navigator>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
-
   );
 }

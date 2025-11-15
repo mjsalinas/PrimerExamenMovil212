@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import { View, Text, Switch } from "react-native";
+import { View, Text, Switch, TouchableOpacity } from "react-native";
 
 const SettingsScreen = () => {
-  const [darkMode] = useState(false); 
-  const [showAdvanced, setShowAdvanced] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [showAdvanced, setShowAdvanced] = useState<boolean>(false);
 
   return (
     <View style={{ padding: 20 }}>
       <Text>Modo Oscuro</Text>
-      <Switch value={darkMode} onValueChange={() => {}} />
+      <Switch value={darkMode} onValueChange={setDarkMode} />
 
-      <Text onPress={() => setShowAdvanced(showAdvanced)}>Mostrar Avanzado</Text>
+      <TouchableOpacity onPress={() => setShowAdvanced((s) => !s)}>
+        <Text>Mostrar Avanzado</Text>
+      </TouchableOpacity>
 
-      {!showAdvanced ? <Text>Configuraciones Avanzadas</Text> : null}
+      {showAdvanced ? <Text>Configuraciones Avanzadas</Text> : null}
     </View>
   );
 };
