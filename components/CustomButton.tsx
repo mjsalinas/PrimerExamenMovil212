@@ -1,10 +1,19 @@
 import React from "react";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, GestureResponderEvent } from "react-native";
 
-const CustomButton = ({ label }) => {
+type CustomButtonProps = {
+  label: string;
+  onPress?: (event: GestureResponderEvent) => void;
+};
+
+const CustomButton: React.FC<CustomButtonProps> = ({ label, onPress }) => {
   return (
-    <TouchableOpacity style={{ backgroundColor: "blue", padding: 10 }}>
-      <Text style={{ color: "white" }}>{label}</Text>
+    <TouchableOpacity
+      accessibilityRole="button"
+      onPress={onPress}
+      style={{ backgroundColor: "blue", padding: 10, borderRadius: 6 }}
+    >
+      <Text style={{ color: "white", textAlign: 'center' }}>{label}</Text>
     </TouchableOpacity>
   );
 };
