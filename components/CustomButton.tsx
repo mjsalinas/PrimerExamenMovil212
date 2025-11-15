@@ -1,42 +1,39 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet} from "react-native";
+import { TouchableOpacity, Text, StyleSheet, StyleProp, ViewStyle, TextStyle } from "react-native";
 
 type Props = {
-    title: string;
-    onPress: () => void;
-    variant?: "primary" | "secondary" | "tertiary";
+  label: string;
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
+  onPress?: () => void;
 };
 
-
-export default function CustomButton ({ title, variant = "primary"}: Props){
-  const styles = getStyles(variant);
-
+const CustomButton = ({
+  label,
+  style,
+  textStyle,
+  onPress,
+}: Props) => {
   return (
-    <TouchableOpacity style={{ backgroundColor: "blue", padding: 10 }}>
-      <Text style={{ color: "white" }}>{title}</Text>
+    <TouchableOpacity style={[styles.buttonBase, style]} onPress={onPress}>
+      <Text style={[styles.textBase, textStyle]}>{label}</Text>
     </TouchableOpacity>
   );
-
-  } 
-const getStyles = (variant: 'primary' | 'secondary' | 'tertiary') => 
-    StyleSheet.create(
-        {
-            button:{
-                borderColor: "#000",
-                borderRadius: 6,
-                padding: 12, 
-                marginBottom: 10,
-                backgroundColor: variant === "primary" ? '#2d0f2fff' : 
-                                    variant === "secondary" ? '#E3DBDB' :
-                                        "#fff"
-            }, 
-            buttonTitle:{
-                color: variant === 'primary'?'#ccc' : 
-                        variant === 'secondary'? '#000' :
-                        '#656c78',
-                fontWeight: 'bold'
-            }
-        }
-    )
-
 };
+
+const styles = StyleSheet.create({
+  buttonBase: {
+    backgroundColor: "blue",
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  textBase: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+});
+
+export default CustomButton;
