@@ -1,21 +1,13 @@
 import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import HomeScreen from "./screens/HomeScreen";
-import ProfileScreen from "./screens/ProfileScreen";
-import SettingsScreen from "./screens/SettingsScreen";
-const Stack = createNativeStackNavigator();
+import StackNavigator from "./src/navigation/StackNavigator";
+import { navigationRef } from "./src/navigation/NavigationService";
 
 
-  export default function App() {
+export default function App() {
   return (
-    <NavigationContainer>
-    <Stack.Navigator initialRouteName='Home'>
-      <Stack.Screen name='Home' component={HomeScreen} />
-      <Stack.Screen name='Profile' component={SettingsScreen} />
-       <Stack.Screen name='Settings' component={SettingsScreen} />
-    </Stack.Navigator>
+    <NavigationContainer ref={navigationRef}>
+      <StackNavigator />
     </NavigationContainer>
-
   );
 }
