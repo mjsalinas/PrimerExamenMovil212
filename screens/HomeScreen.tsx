@@ -1,18 +1,25 @@
 import React from "react";
-import { View, Button, Text } from "react-native";
+import { View, Text } from "react-native";
+import CustomButton from "../components/CustomButton";
 
 const HomeScreen = ({ navigation }: any) => {
-  const showWelcome = false;
+  const showWelcome = true;
 
   return (
     <View style={{ padding: 20 }}>
-      {showWelcome || <Text>Bienvenido a la App</Text>}
+      {showWelcome ? <Text style={{fontSize:18,marginBottom:12}}>Bienvenido a la App</Text> : null}
 
-      <Button
+      <CustomButton
         title="Ir a Perfil"
-        onPress={() => {
-          navigation.navigate("Profile");
-        }}
+        variant="primary"
+        onPress={() => navigation.navigate('Tabs', { screen: 'Profile' })}
+        style={{ marginBottom: 12 }}
+      />
+
+      <CustomButton
+        title="Ir a Configuración"
+        variant="secondary"
+        onPress={() => navigation.navigate('Tabs', { screen: 'Settings' })}
       />
     </View>
   );

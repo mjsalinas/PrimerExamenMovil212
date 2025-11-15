@@ -8,7 +8,8 @@ const ProfileScreen = () => {
   const [saved, setSaved] = useState<boolean>(false);
 
   const guardarPerfil = () => {
-    if (nombre.trim() !== "" && edad.trim() !== "") {
+    const edadNum = parseInt(edad, 10);
+    if (nombre.trim() !== "" && edad.trim() !== "" && bio.trim() !== "" && !isNaN(edadNum) && edadNum > 0) {
       setSaved(true);
     }
   };
