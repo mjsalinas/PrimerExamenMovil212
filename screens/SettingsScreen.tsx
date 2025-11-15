@@ -1,20 +1,33 @@
 import React, { useState } from "react";
 import { View, Text, Switch } from "react-native";
 
-const SettingsScreen = () => {
-  const [darkMode] = useState(false); 
+export default function SettingsScreen() {
+  const [darkMode, setDarkMode] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   return (
-    <View style={{ padding: 20 }}>
-      <Text>Modo Oscuro</Text>
-      <Switch value={darkMode} onValueChange={() => {}} />
+    <View style={{ padding: 20, backgroundColor: darkMode ? "#222" : "#fff", flex: 1 }}>
+      <Text style={{ color: darkMode ? "#fff" : "#000" }}>Modo Oscuro</Text>
 
-      <Text onPress={() => setShowAdvanced(showAdvanced)}>Mostrar Avanzado</Text>
+      <Switch
+        value={darkMode}
+        onValueChange={() => setDarkMode(!darkMode)}
+      />
 
-      {!showAdvanced ? <Text>Configuraciones Avanzadas</Text> : null}
+      <Text
+        style={{ marginTop: 20, color: darkMode ? "#fff" : "#000" }}
+        onPress={() => setShowAdvanced(!showAdvanced)}
+      >
+        {showAdvanced ? "Ocultar Avanzado" : "Mostrar Avanzado"}
+      </Text>
+
+      {showAdvanced && (
+        <View style={{ marginTop: 10 }}>
+          <Text style={{ color: darkMode ? "#fff" : "#000" }}>
+            Configuraciones avanzadas...
+          </Text>
+        </View>
+      )}
     </View>
   );
-};
-
-export default SettingsScreen;
+}
