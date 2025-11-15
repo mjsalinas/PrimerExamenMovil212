@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Text } from "react-native";
+import { View, TextInput, Button, Text , StyleSheet} from "react-native";
 
 const ProfileScreen = () => {
   const [nombre, setNombre] = useState();
@@ -27,5 +27,11 @@ const ProfileScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  text1: {
+    fontSize:20,
+  }
+});
 
 export default ProfileScreen;
