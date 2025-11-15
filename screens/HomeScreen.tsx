@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Button, Text } from "react-native";
+import { View, Text } from "react-native";
+import CustomButton from "../components/CustomButton";
 
 const HomeScreen = ({ navigation }: any) => {
   const showWelcome = false;
@@ -8,10 +9,17 @@ const HomeScreen = ({ navigation }: any) => {
     <View style={{ padding: 20 }}>
       {showWelcome || <Text>Bienvenido a la App</Text>}
 
-      <Button
-        title="Ir a Perfil"
+      <CustomButton
+        label="Ir a Perfil"
         onPress={() => {
-          navigation.navigate("Profile");
+          navigation.navigate("MainTabs", { screen: "Perfil" });
+        }}
+      />
+
+      <CustomButton
+        label="Ir a Configuración"
+        onPress={() => {
+          navigation.navigate("MainTabs", { screen: "Configuracion" });
         }}
       />
     </View>

@@ -8,9 +8,9 @@ const SettingsScreen = () => {
 
 
   return (
-    <View style={{ padding: 20 }}>
-      <Text style={styles.text1}>Configuracion</Text>
-      <TouchableOpacity style={styles.boton1}>
+    <View style={[{padding:20} , darkMode&&styles.oscuro]}>
+      <Text style={[styles.text1, darkMode&&{color: '#fff'}]}>Configuracion</Text>
+      <TouchableOpacity style={[styles.boton1, darkMode&&{backgroundColor: '#1a1e2aff'}]}>
       <Text style={styles.text2}>Modo Oscuro</Text>
       <Switch value={darkMode} onValueChange={(darkMode) => {
         setdarkMode(darkMode);
@@ -21,11 +21,17 @@ const SettingsScreen = () => {
       <Text style={styles.text3} onPress={() => setShowAdvanced(!showAdvanced)}>Mostrar Avanzado</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.avanzadas}>
-      {showAdvanced ? <Text>Configuraciones Avanzadas</Text> : null}
-      {showAdvanced ? <Text>-opcion 1</Text> : null}
-      {showAdvanced ? <Text>-opcion 2</Text> : null}           
-      </TouchableOpacity>
+      {
+        showAdvanced ? (
+          <TouchableOpacity style={[styles.avanzadas, darkMode&&{backgroundColor: '#1a1e2aff'}]}>
+            <Text style={[styles.text4, darkMode&&{color: '#fff'}]}>Configuraciones Avanzadas</Text>
+            <Text style={styles.opciones}>-Notificaciones</Text>
+            <Text style={styles.opciones}>-Seguridad</Text>
+            <Text style={styles.opciones}>-Permisos</Text>            
+          </TouchableOpacity>
+        ) : null
+      }
+
 
     </View>
   );
@@ -35,15 +41,19 @@ const styles = StyleSheet.create({
   text1: {
     fontSize:30,
     fontWeight: 'bold',
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   boton1:{
     borderRadius:10,
     backgroundColor: '#fff',
-    shadowColor: '#000000ff',
-    shadowRadius:10,
-    shadowOpacity:10,
-    padding:10,
+    elevation: 3,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingBottom: 25,
+    paddingTop:25,
+    paddingLeft:15,
+    paddingRight:15
   },
     text2: {
     fontSize:20,
@@ -64,7 +74,23 @@ const styles = StyleSheet.create({
     justifyContent:'center'
   },
   avanzadas:{
-    backgroundColor:'#fff'
+    backgroundColor:'#fff',
+    padding: 20,
+    borderRadius: 10,
+    elevation: 4
+
+  },
+  text4:{
+    fontSize:20,
+    fontWeight: 'bold',
+    paddingBottom:10
+  },
+  oscuro:{
+    backgroundColor: '#03000fff',
+    flex:1
+  },
+  opciones:{
+    color: '#646464ff'
   }
 });
 
