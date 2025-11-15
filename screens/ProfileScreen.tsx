@@ -1,48 +1,106 @@
-import { useState } from "react";
-import React = require("react");
-import { View, TextInput, Button, Text } from "react-native";
-import CustomButton from "../components/CustomButton";
+import React, { useState } from "react";
+import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 
- export default function ProfileScreen({ navigation }: any) { 
-
-  const handleLogout = () => {
-    if (navigation.isReady()) {
-            logout();
-            navigation.reset({
-              index: 0,
-              routes: [{name: 'Profile'}]
-  })
-
-const ProfileScreen = () => {
-  const [nombre, setNombre] = useState();
+export default function ProfileScreen() {
+  const [nombre, setNombre] = useState("");
   const [edad, setEdad] = useState("");
-  const [bio] = useState(""); 
+  const [bio, setBio] = useState("");
   const [saved, setSaved] = useState(false);
+  const [error, setError] = useState("");
 
   const guardarPerfil = () => {
-    if (nombre && edad) {
-      setSaved(true);
+    if (!nombre || !edad || !bio) {
+      setError("Todos los campos son obligatorios");
+      setSaved(false);
+      return;
     }
+    setError("");
+    setSaved(true);
   };
 
   return (
-    <View style={{ padding: 20 }}>
-      <TextInput placeholder="Nombre" />
-      <TextInput placeholder="Edad" />
-      <TextInput placeholder="Biografía" />
+    <View style={styles.container}>
+      <View style={styles.centered}>
+        <Text style={styles.title}>Mi Perfil</Text>
 
-      <CustomButton title="Guardar" 
-      onPress={handleLogout} />
-      {saved ? <Text>Guardado!</Text> : ""}
-      {saved && <View> 
-        <Text>Tu nombre es: {nombre}, tienes {edad} años</Text>
-        </View>}
+        <Text style={styles.label}>Nombre</Text>
+        <TextInput
+          style={styles.input}
+          value={nombre}
+          onChangeText={setNombre}
+          placeholder="Tu nombre"
+        />
+
+        <Text style={styles.label}>Edad</Text>
+        <TextInput
+          style={styles.input}
+          value={edad}
+          onChangeText={setEdad}
+          keyboardType="numeric"
+          placeholder="Tu edad"
+        />
+
+        <Text style={styles.label}>Bio</Text>
+        <TextInput
+          style={[styles.input, { height: 80 }]}
+          value={bio}
+          onChangeText={setBio}
+          multiline
+          placeholder="Cuéntanos sobre ti"
+        />
+
+        <Button title="Guardar" onPress={guardarPerfil} />
+
+        {error ? <Text style={styles.error}>{error}</Text> : null}
+        {saved ? (
+          <Text style={styles.result}>
+            ✓ Guardado: {nombre} • {edad} años
+          </Text>
+        ) : null}
+      </View>
     </View>
   );
-};
+}
 
-export default ProfileScreen;
-      function logout(): void {
-        throw new Error("Function not implemented.");
-      }
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
+  centered: {
+    width: "100%",
+    maxWidth: 320,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 16,
+    textAlign: "center",
+  },
+  label: {
+    fontSize: 14,
+    marginBottom: 6,
+    fontWeight: "600",
+  },
+  input: {
+    borderBottomWidth: 1,
+    borderColor: "#ddd",
+    marginBottom: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 4,
+  },
+  error: {
+    color: "red",
+    marginTop: 12,
+    textAlign: "center",
+  },
+  result: {
+    marginTop: 12,
+    fontSize: 16,
+    color: "green",
+    textAlign: "center",
+    fontWeight: "600",
+  },
+});
