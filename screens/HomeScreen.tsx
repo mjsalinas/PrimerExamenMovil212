@@ -1,18 +1,29 @@
+// screens/HomeScreen.tsx
 import React from "react";
-import { View, Button } from "react-native";
+import { View, Text } from "react-native";
+import CustomButton from "../components/CustomButton";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../App";
 
-const HomeScreen = ({ navigation }: any) => {
-  const showWelcome = false;
+type Props = {
+  navigation: NativeStackNavigationProp<RootStackParamList, "Home">;
+};
 
+const HomeScreen = ({ navigation }: Props) => {
   return (
     <View style={{ padding: 20 }}>
-      {showWelcome || <Text>Bienvenido a la App</Text>}
+      <Text style={{ fontSize: 22, marginBottom: 20 }}>Bienvenido a la App</Text>
 
-      <Button
+      <CustomButton
         title="Ir a Perfil"
-        onPress={() => {
-          navigation.navigate("Profile");
-        }}
+        onPress={() => navigation.navigate("Tabs", { screen: "Profile" })}
+        variant="primary"
+      />
+
+      <CustomButton
+        title="Ir a Configuración"
+        onPress={() => navigation.navigate("Tabs", { screen: "Settings" })}
+        variant="secondary"
       />
     </View>
   );
