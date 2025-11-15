@@ -8,13 +8,9 @@ type Props = {
 };
 
 export default function CustomButton({ title, onPress, variant = "primary" }: Props) {
-  const styles = getStyles(variant);
   return (
     <TouchableOpacity
-      style={[
-        styles.button,
-        variant === "secondary" && styles.secondary
-      ]}
+      style={[styles.button, variant === "secondary" && styles.secondary]}
       onPress={onPress}
     >
       <Text style={styles.text}>{title}</Text>
@@ -22,4 +18,19 @@ export default function CustomButton({ title, onPress, variant = "primary" }: Pr
   );
 }
 
-export default CustomButton;
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: "Blue",
+    padding: 12,
+    borderRadius: 8,
+    marginTop: 10,
+  },
+  secondary: {
+    backgroundColor: "green",
+  },
+  text: {
+    color: "white",
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+});

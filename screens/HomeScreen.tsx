@@ -9,15 +9,14 @@ export default function HomeScreen({ navigation }: any) {
 
       <CustomButton
         title="Ir a Perfil"
-        onPress={() => navigation.navigate("Profile" )}
+        onPress={() => navigation.navigate("Tabs", { screen: "Profile" })}
       />
 
       <CustomButton
         title="Ir a Configuración"
         variant="secondary"
-        onPress={() => navigation.navigate( "Settings" )}
+        onPress={() => navigation.navigate("Tabs", { screen: "Settings" })}
       />
     </View>
   );
 }
-export default HomeScreen;

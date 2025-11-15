@@ -6,9 +6,9 @@ export default function SettingsScreen() {
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   const theme = {
-    bg: darkMode ? "Black" : "White",
-    card: darkMode ? "Gray" : "White",
-    text: darkMode ? "White" : "Black",
+    bg: darkMode ? "#11121A" : "#f2f2f2",
+    card: darkMode ? "#1e1f29" : "white",
+    text: darkMode ? "white" : "black",
   };
 
   return (
@@ -53,4 +53,21 @@ export default function SettingsScreen() {
   );
 }
 
-export default SettingsScreen;
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 20 },
+  title: { fontSize: 22, fontWeight: "bold", marginBottom: 20 },
+  card: {
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 15,
+    elevation: 3,
+  },
+  label: { fontSize: 16, marginBottom: 5, fontWeight: "bold" },
+  greenBtn: {
+    backgroundColor: "#28a745",
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 10,
+  },
+  greenBtnText: { color: "white", fontWeight: "bold", textAlign: "center" },
+});
