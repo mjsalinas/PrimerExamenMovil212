@@ -1,21 +1,20 @@
-import React from "react";
-import { View, Button } from "react-native";
+import { useState } from "react";
+import React = require("react");
+import { Text, View, Button } from "react-native";
+import CustomButton from "../components/CustomButton";
 
-const HomeScreen = ({ navigation }: any) => {
+export default function HomeScreen({navigation, initialRouteName}: any) {
+const [ items, setItems] = useState<String[]> ([]);
   const showWelcome = false;
-
+  const handleRegisterService = () =>{
+    navigation.navigate('Profile')
+  }
   return (
     <View style={{ padding: 20 }}>
       {showWelcome || <Text>Bienvenido a la App</Text>}
 
-      <Button
-        title="Ir a Perfil"
-        onPress={() => {
-          navigation.navigate("Profile");
-        }}
-      />
+      <CustomButton title="Ir a Perfil"
+        onPress={handleRegisterService}/>
     </View>
   );
 };
-
-export default HomeScreen;

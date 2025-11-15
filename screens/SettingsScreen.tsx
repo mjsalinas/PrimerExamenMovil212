@@ -1,5 +1,7 @@
+import React = require("react");
 import { useState } from "react";
 import { View, Text, Switch } from "react-native";
+
 
 const SettingsScreen = () => {
   const [darkMode] = useState(false); 
