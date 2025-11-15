@@ -1,25 +1,22 @@
-import HomeScreen from "./screens/HomeScreen";
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ProfileScreen from "./screens/ProfileScreen";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import SettingsScreen from "./screens/SettingsScreen";
 
+export type TabParamList = {
+  Profile: undefined;
+  Settings: undefined;
+};
 
+const Tab = createBottomTabNavigator<TabParamList>();
 
-//import ProfileScreen from '../Screens/';
+export default function TabsNavigator({ route }: any) {
+  const initialTab = route.params?.screen || "Profile";
 
-export type TabsParamList = {
-    Home: undefined;
-}
-
-const Tab = createBottomTabNavigator<TabsParamList>();
-
-export default function TabsNavigator() {
-    return(
-        <Tab.Navigator>
-            <Tab.Screen name="Home" component={HomeScreen} options={{title: 'Home'}}/>
-
-
-            
-
-        </Tab.Navigator>
-    );
+  return (
+    <Tab.Navigator initialRouteName={initialTab}>
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
+  );
 }
