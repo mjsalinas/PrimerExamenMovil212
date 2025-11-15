@@ -1,14 +1,8 @@
 {
-  "extends": "expo/tsconfig.base",
+  "extends": "expo/tsconfig.react-native",
   "compilerOptions": {
-    "target": "ESNext",
-    "moduleResolution": "bundler",
-    "customConditions": ["react-native"],
     "strict": true,
-    "allowJs": false,
-    "jsx": "react-native",
     "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true
+    "esModuleInterop": true
   }
 }
