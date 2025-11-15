@@ -19,8 +19,9 @@ const Stack = createNativeStackNavigator<RootStackParamList >();
 export default function StackNavigator() {
     return(
         <Stack.Navigator
-            initialRouteName='Profile'
+            initialRouteName='Home'
             screenOptions={{headerShown: false}}
+            //pide un children para poder acceder al stack.scree
             children={
                 <>
                     <Stack.Screen name="Home" component={HomeScreen} />
