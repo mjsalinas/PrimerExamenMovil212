@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, Switch } from "react-native";
 
+
+
 const SettingsScreen = () => {
   const [darkMode] = useState(false); 
   const [showAdvanced, setShowAdvanced] = useState(false);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, Text } from "react-native";
 
+
 const ProfileScreen = () => {
   const [nombre, setNombre] = useState();
   const [edad, setEdad] = useState("");
@@ -19,7 +20,7 @@ const ProfileScreen = () => {
       <TextInput placeholder="Edad" />
       <TextInput placeholder="Biografía" />
 
-      <Button title="Guardar" onPress={() => {}} />
+      <Button title="Guardar" onPress={guardarPerfil} />
       {saved ? <Text>Guardado!</Text> : ""}
       {saved && <View> 
         <Text>Tu nombre es: {nombre}, tienes {edad} años</Text>
