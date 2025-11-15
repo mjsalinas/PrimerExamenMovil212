@@ -7,7 +7,7 @@ const SettingsScreen = ({ route }: { route: any }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => setIsDarkMode(prev => !prev);
-  const toggleAdvanced = () => setShowAdvanced(prev => !prev);
+  const toggleAdvanced = () => setShowAdvanced((prev: any) => !prev);
 
   const dynamicStyles = StyleSheet.create({
     container: {
