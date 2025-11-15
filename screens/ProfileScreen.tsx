@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import {useState} from "react";
 import { View, TextInput, Button, Text } from "react-native";
+
 
 const ProfileScreen = () => {
   const [nombre, setNombre] = useState();

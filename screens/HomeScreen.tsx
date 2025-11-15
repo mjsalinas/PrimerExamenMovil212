@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Button } from "react-native";
+import { View, Button, Text,  } from "react-native";
 
 const HomeScreen = ({ navigation }: any) => {
   const showWelcome = false;
@@ -12,6 +12,13 @@ const HomeScreen = ({ navigation }: any) => {
         title="Ir a Perfil"
         onPress={() => {
           navigation.navigate("Profile");
+        }}
+      />
+
+      <Button
+        title="Ir a Configuracion"
+        onPress={() => {
+          navigation.navigate("Settings");
         }}
       />
     </View>
