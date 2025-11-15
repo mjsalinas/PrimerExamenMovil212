@@ -1,12 +1,25 @@
 import React from "react";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-const CustomButton = ({ label }) => {
+type Props = {
+  title: string;
+  onPress: () => void;
+  variant?: "primary" | "secondary";
+};
+
+export default function CustomButton({ title, onPress, variant = "primary" }: Props) {
+  const styles = getStyles(variant);
   return (
-    <TouchableOpacity style={{ backgroundColor: "blue", padding: 10 }}>
-      <Text style={{ color: "white" }}>{label}</Text>
+    <TouchableOpacity
+      style={[
+        styles.button,
+        variant === "secondary" && styles.secondary
+      ]}
+      onPress={onPress}
+    >
+      <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );
-};
+}
 
 export default CustomButton;

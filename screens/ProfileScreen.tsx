@@ -1,31 +1,51 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Text } from "react-native";
+import { View, TextInput, Button, Text, Alert } from "react-native";
 
-const ProfileScreen = () => {
-  const [nombre, setNombre] = useState();
+export default function ProfileScreen() {
+  const [nombre, setNombre] = useState("");
   const [edad, setEdad] = useState("");
-  const [bio] = useState(""); 
+  const [bio, setBio] = useState("");
   const [saved, setSaved] = useState(false);
 
   const guardarPerfil = () => {
-    if (nombre && edad) {
-      setSaved(true);
+    if (!nombre || !edad || !bio) {
+      Alert.alert("Error", "Todos los campos son obligatorios");
+      return;
     }
+    setSaved(true);
   };
 
   return (
     <View style={{ padding: 20 }}>
-      <TextInput placeholder="Nombre" />
-      <TextInput placeholder="Edad" />
-      <TextInput placeholder="Biografía" />
+      <TextInput
+        placeholder="Nombre"
+        value={nombre}
+        onChangeText={setNombre}
+      />
 
-      <Button title="Guardar" onPress={() => {}} />
-      {saved ? <Text>Guardado!</Text> : ""}
-      {saved && <View> 
-        <Text>Tu nombre es: {nombre}, tienes {edad} años</Text>
-        </View>}
+      <TextInput
+        placeholder="Edad"
+        keyboardType="numeric"
+        value={edad}
+        onChangeText={setEdad}
+      />
+
+      <TextInput
+        placeholder="Biografía"
+        multiline
+        value={bio}
+        onChangeText={setBio}
+      />
+
+      <Button title="Guardar" onPress={guardarPerfil} />
+
+      {saved && (
+        <Text style={{ marginTop: 20 }}>
+          Datos guardados correctamente
+        </Text>
+      )}
     </View>
   );
-};
+}
 
 export default ProfileScreen;
