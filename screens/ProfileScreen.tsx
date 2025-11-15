@@ -19,11 +19,11 @@ const ProfileScreen = () => {
       <TextInput placeholder="Edad" />
       <TextInput placeholder="Biografía" />
 
-      <Button title="Guardar" onPress={() => {}} />
-      {saved ? <Text>Guardado!</Text> : ""}
-      {saved && <View> 
+      <Button title="Guardar" onPress={guardarPerfil} />
+      <View> 
         <Text>Tu nombre es: {nombre}, tienes {edad} años</Text>
-        </View>}
+        
+        </View>
     </View>
   );
 };
