@@ -13,16 +13,18 @@ export default function ServiceRegistryScreen({navigation}: any){
             params: {newItem: item}
         });
     };
+
     return(
         <View style={styles.container}>
             <Text style={styles.title}>Agregar nuevo servicio</Text>
             <CustomButton 
-                title="Guardar"
+                label="Guardar"
                 onPress={handleOnSave}
             />
         </View>
     );
 }
+
 const styles = StyleSheet.create({
     container:{
         flex: 1, 
@@ -32,4 +34,4 @@ const styles = StyleSheet.create({
     title:{
         fontSize: 20, marginBottom: 10 
     }
-})
+});
